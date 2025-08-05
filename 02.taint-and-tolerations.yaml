@@ -11,15 +11,15 @@ spec:
     imagePullPolicy: Always
   nodeSelector:
     disktype: ssd
-  # tolerations:
-  # - key: "key1"
-  #   operator: "Equal"
-  #   value: "value1"
-  #   effect: "NoExecute"
-  # - key: "key1"
-  #   operator: "Equal"
-  #   value: "value1"
-  #   effect: "NoSchedule"
+  tolerations:
+  - key: "key1"
+    operator: "Equal"
+    value: "value1"
+    effect: "NoExecute"
+  - key: "key1"
+    operator: "Equal"
+    value: "value1"
+    effect: "NoSchedule"
 
 #let's say we have tainted instance with label disktype:ssd
 #> kubectl taint nodes ip-192-168-20-236.ec2.internal key1=value1:NoSchedule
