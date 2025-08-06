@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values:
+            - gpu
+      # preferredDuringSchedulingIgnoredDuringExecution:
+      # - weight: 1
+      #   preference:
+      #     matchExpressions:
+      #     - key: another-node-label-key
+      #       operator: In
+      #       values:
+      #       - another-node-label-value
+  containers:
+  - name: nginx
+    image: nginx
+
+#this works opposite to nodeaffinity
+# to test this first assign label to node using 
+# kubectl label nodes ip-192-168-0-27.ec2.internal hardware=gpu -> run this cmnd  in workstation with crct node ip 
+# so now using nodeantiaffinity i want to control my pod
+# i want my pod to be created in node which doesnot have hardware label with value gpu
+# kubectl apply -f 03.nodeaffinity.yaml
+# kubectl get pods -o wide
+#u can see that pod will be created in node whic are other than having value - hardware=gpu
