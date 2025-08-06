@@ -28,3 +28,6 @@ spec:
 # kubectl label nodes ip-192-168-0-27.ec2.internal hardware=gpu -> run this cmnd  in workstation with crct node ip 
 # so now using nodeaffinity i want to control my pod
 # i want my pod to be created in node which has hardware label with value gpu
+# kubectl apply -f 03.nodeaffinity.yaml
+# kubectl get pods -o wide
+#u can see that pod will be created in node for whihc u assigned label - hardware=gpu
