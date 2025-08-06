@@ -4,12 +4,12 @@ metadata:
   name: with-node-affinity
 spec:
   affinity:
-    nodeAntiAffinity:
+    nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
           - key: hardware
-            operator: In
+            operator: NotIn
             values:
             - gpu
       # preferredDuringSchedulingIgnoredDuringExecution:
