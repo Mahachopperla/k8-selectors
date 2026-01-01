@@ -21,9 +21,3 @@ spec:
     value: "value1"
     effect: "NoSchedule"
 
-#let's say we have tainted instance with label disktype:ssd
-#> kubectl taint nodes ip-192-168-20-236.ec2.internal key1=value1:NoSchedule
-#> kubectl taint nodes ip-192-168-20-236.ec2.internal key1=value1:NoExecute
-#now we want our pod to enter that tainted pod
-#so we should use tolerations in pod to enter into tainted instance
-# if u cuse tolerations and node selector then pod will go to specific node which u desired it to send it
